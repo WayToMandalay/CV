@@ -1,10 +1,13 @@
-// @font-face {
-//   font-family: 'Manrope';
-//   src: 
-//      url('../../assets/fonts/Manrope/Manrope-Light.ttf') format('truetype');
-//   font-style: normal;
-//   font-weight: 300;
-// }
+@import '../fonts/regular.scss';
+@import '../fonts/brands.scss';
+
+@font-face {
+  font-family: 'Manrope';
+  src: 
+     url('../assets/fonts/Manrope/Manrope-Light.ttf') format('truetyspe');
+  font-style: normal;
+  font-weight: 300;
+}
 
 @font-face {
   font-family: 'Manrope';

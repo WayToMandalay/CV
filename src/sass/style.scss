@@ -1,7 +1,14 @@
-@import './styles/fonts.scss';
-@import './styles/extentions.scss';
+
+
+
+
 @import './styles/variables.scss';
-@import './styles/mixins.scss';
+
+@import './fonts/fontawesome.scss';
+@import './styles/fonts.scss';
+
+@import './styles/extentions.scss';
+@import './styles/myMixins.scss';
 
 
 @import './components/basics.scss';
