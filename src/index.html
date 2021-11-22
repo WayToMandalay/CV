@@ -4,10 +4,98 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Stanislav Prokopyshyn | CV</title>
+  <link rel="preload" href="css/normalize.css" as="style">
+  <noscript>
+    <link rel="stylesheet" href="css/normalize.css">
+  </noscript>
+
 </head>
 <body>
-  <h1>Hi there, my Friend</h1>
-  <h2>My CV</h2>
+  
+  <header class="header">
+    <div class="container header__container">
+      <a class="logo" href="#">S</a>
+
+      <button class="burger">
+        <span class="visually-hidden">Open menu</span>
+        <span class="burger__line"></span>
+      </button>
+
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a class="nav__link nav__link--active" href="#greeting">Home</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#about">About</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#certificates">Certificates</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#skills">Skills</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#code">Code example</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#portfolio">Portfolio</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#experience">Experience</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#contacts">Contacts</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="greeting section" id="greeting">
+      <div class="container greeting__container">
+        <h1 class="visually-hidden">Prokopyshyn Stanislav, Front-end developer</h1>
+        <p class="greeting__text scroll-item">
+          Hi, my name is <span class="text-color typed"></span>
+          <br>
+          I'm a Front-end Developer.
+        </p>
+        <a class="greeting__btn scroll-item" href="#">
+
+          <div class="top"><span>Know more</span></div>
+          <div class="bottom"><span>Know more</span></div>
+
+        </a>
+      </div>
+    </section>
+
+    <section class="about section" id="about">
+      <div class="container about__container">
+          <div class="about__photo scroll-item">
+            <figure class="about__photo-wrapper scroll-show">
+              
+              <img src="./img/myPhoto.jpg" alt="Stas Prokopyshyn photo">
+              
+            </figure>
+          </div>
+        <div class="scroll-item">
+          <div class="about__content scroll-show">
+            <h2 class="title">About Me</h2>
+            <p class="about__text text">I like to code things from scratch, and enjoy bringing ideas to life in the
+              browser. Interested in working on ambitious projects with positive people.</p>
+            <p class="about__text text">Skills can be taught, personality is inherent. I prefer to keep learning,
+              continue challenging myself and do interesting things.</p>
+            <a class="btn about__btn" href="#"
+              target="_blank">
+              <i class="fas fa-download"></i>
+              <span>Download CV</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
 </body>
 </html>

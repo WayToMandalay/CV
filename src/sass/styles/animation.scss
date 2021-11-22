@@ -1,0 +1,12 @@
+@keyframes up-down {
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+
+.scroll-item--active,
+.scroll-item--active .scroll-show {
+  transform: translate(0, 0);
+  opacity: 1;
+}

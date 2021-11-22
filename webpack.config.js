@@ -8,10 +8,10 @@ const CopyPlugin = require('copy-webpack-plugin');
 const devServer = (isDev) => !isDev ? {} : {
   devServer: {
     open: true,
-    hot: true,
+    // hot: true,
     port: 8080,
     static: {
-      directory: path.join(__dirname, 'public'),
+      // directory: path.join(__dirname, 'public'),
     },
   },
 };
@@ -22,12 +22,12 @@ module.exports = ({ development }) => ({
   mode: development ? 'development' : 'production',
   devtool: development ? 'inline-source-map' : false,
   entry: {
-    main: './src/index.js',
+    main: './src/js/index.js',
   },
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
-    assetModuleFilename: 'assets/[hash][ext]',
+    assetModuleFilename: 'img/assets/[ext][query]',
   },
   module: {
     rules: [

@@ -1,3 +1,17 @@
-body {
-  background-color: chocolate;
-}
+@import './styles/fonts.scss';
+@import './styles/extentions.scss';
+@import './styles/variables.scss';
+@import './styles/mixins.scss';
+
+
+@import './components/basics.scss';
+@import './components/header.scss';
+@import './components/greeting.scss';
+@import './components/about.scss';
+
+
+
+@import './styles/animation.scss';
+
+
+

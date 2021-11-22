@@ -1,0 +1,105 @@
+.about {
+  &__container {
+    display: flex;
+    align-items: start;
+
+    @include breakpoint-max(md) {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__photo {
+    position: relative;
+    margin-right: 120px;
+
+    &:hover {
+      & .about__photo-wrapper {
+        transform: translateX(10%);
+      }
+
+      &::after {
+        top: 10%;
+        right: 0;
+      }
+
+      & img {
+        transform: scale(1.1);
+      }
+    }
+
+    @include breakpoint-max(lg) {
+      margin-right: 100px;
+    }
+
+    @include breakpoint-max(md) {
+      width: 100%;
+      margin: 0 auto 50px;
+      padding: 30px;
+      pointer-events: none;
+    }
+
+    @include breakpoint-max(sm) {
+      padding: 0;
+    }
+
+    &-wrapper {
+      @extend %bdnr;
+
+      // min-width: 350px;
+      width: 350px;
+      height: 350px;
+      margin: 0;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateX(-10%);
+      transition: 0.7s ease-in-out;
+
+      @include breakpoint-max(lg) {
+        width: 250px;
+        height: 250px;
+      }
+
+      @include breakpoint-max(md) {
+        width: 100%;
+        height: 350px;
+      }
+
+      @include breakpoint-max(xs) {
+        height: 300px;
+      }
+
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.7s;
+      }
+    }
+  }
+
+  &__content {
+    flex-grow: 1;
+    opacity: 0;
+    transform: translateY(15%);
+    transition: 0.7s ease-in-out 0.5s;
+  }
+
+  &__text {
+    margin: 0;
+    margin-bottom: 30px;
+    line-height: 2;
+
+    @include breakpoint-max(sm) {
+      &:last-of-type {
+        margin-bottom: 50px;
+      }
+    }
+  }
+
+  &__btn {
+
+    i {
+      font-size: 24px;
+    }
+  }
+}
