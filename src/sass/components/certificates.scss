@@ -1,0 +1,137 @@
+.certificates {
+  background-color: $color-grey;
+
+  &__title {
+    margin-bottom: 60px;
+    opacity: 0;
+    transition: 1s;
+  }
+
+  &__list {
+    @extend %list;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  &__item {
+    flex-basis: 30%;
+    min-height: 335px;
+
+    &:nth-child(2) .certificates__card {
+      transition: background-color 0.3s, transform 0.6s ease-in-out 1s,
+        opacity 0.8s 1s;
+    }
+
+    &:nth-child(3) .certificates__card {
+      transition: background-color 0.3s, transform 0.6s ease-in-out 1.3s,
+        opacity 0.8s 1.3s;
+    }
+
+    @include breakpoint-max(lg) {
+      flex-basis: 45%;
+      margin-bottom: 35px;
+
+      &:nth-child(2) .certificates__card,
+      &:nth-child(3) .certificates__card {
+        transition: background-color 0.3s, transform 0.6s ease-in-out 0.5s,
+          opacity 0.8s 0.5s;
+      }
+    }
+
+    @include breakpoint-max(md) {
+      flex-basis: 70%;
+    }
+
+    @include breakpoint-max(sm) {
+      flex-basis: 80%;
+    }
+
+    @include breakpoint-max(xs) {
+      flex-basis: 100%;
+      min-height: 300px;
+    }
+  }
+
+  &__card {
+    @extend %shadow;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 50px 15px;
+    text-align: center;
+    background-color: $color-white;
+
+    opacity: 0;
+    transition: background-color 0.3s, transform 0.6s ease-in-out 0.5s,
+      opacity 0.8s 0.5s;
+    transform: translateX(-20%);
+
+    &::before {
+      margin-bottom: 30px;
+      font-size: $fs-xl;
+    }
+
+    &:hover {
+      color: $color-white;
+      background-color: $color-primary;
+
+      p {
+        color: $color-white;
+      }
+    }
+
+    @include breakpoint-max(xs) {
+      padding: 30px 15px;
+    }
+  }
+
+  &__name {
+    margin-bottom: 10px;
+    font-size: $fs-s;
+    font-weight: $fw-bold;
+  }
+
+  &__company {
+    flex: 1 1 auto;
+    max-width: 200px;
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: $fs-xxs;
+    line-height: 1.3;
+  }
+
+  &__description {
+    flex: 1 1 auto;
+    color: $color-dark-grey;
+    font-size: $fs-xxs;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &-courses:before,
+  &-language:before,
+  &-online:before
+  {
+    font-family: 'Font Awesome 5 Pro';
+    font-weight: 900;
+    margin: 0;
+  }
+
+  &-language:before {
+    content: '\f57d';
+  }
+
+  &-courses:before {
+    content: '\f5fc';
+  }
+
+  &-online:before {
+    content: '\f012';
+  }
+}

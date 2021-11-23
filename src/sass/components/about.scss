@@ -97,9 +97,32 @@
   }
 
   &__btn {
-
     i {
+      position: absolute;
+      top: 50%;
+      transform: translateY(0);
+      left: 30px;
+      opacity: 0;
       font-size: 24px;
+      color: $color-primary;
+      transition: transform 0.4s ease-in-out, opacity 0.4s;
+    }
+
+    span {
+      position: relative;
+      transition: left 0.4s ease-in-out;
+      left: 0;
+    }
+
+    &:hover {
+      span {
+        left: 10px;
+      }
+
+      i {
+        opacity: 1;
+        transform: translateY(-50%);
+      }
     }
   }
 }
