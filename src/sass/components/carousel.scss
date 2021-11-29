@@ -5,8 +5,8 @@
   overflow: hidden;
 
   &__container {
-    padding-top: 70px;
-    padding-bottom: 70px;
+    padding-top: 90px;
+    padding-bottom: 90px;
     opacity: 0;
     transform: translateX(100%);
     transition: 1s;
@@ -28,7 +28,7 @@
     text-align: center;
     transition: $transition;
 
-    &::before {
+    &:before {
       margin-bottom: 10px;
       font-size: $fs-xxl;
       transition: transform $transition;
@@ -41,6 +41,12 @@
 
     i {
       font-size: $fs-xxl;
+
+      &.fa-terminal,
+      &.fa-java      
+      {
+        font-size: $fs-xxl;
+      }
     }
   }
 }

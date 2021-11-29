@@ -1,10 +1,7 @@
 'use strict';
 import '../sass/style.scss';
-import './components/vanilla-tilt.min.js';
 import Typed from './components/typed.min.js';
 import {Swiper} from './components/swiper.js';
-
-
 
 document.addEventListener('DOMContentLoaded', function(event) {
   console.log('DOM fully loaded and parsed');
@@ -12,6 +9,38 @@ document.addEventListener('DOMContentLoaded', function(event) {
   let header = document.querySelector('.header');
   let burgerBtn = document.querySelector('.burger');
   let navLinks = document.querySelectorAll('.nav__link');
+
+
+  // -----------  mobile or not  -----------
+
+const isMobile = {
+  Android: function () {
+    return navigator.userAgent.match(/Android/i);
+  },
+  BlackBerry: function () {
+    return navigator.userAgent.match(/BlackBerry/i);
+  },
+  iOS: function () {
+    return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+  },
+  Opera: function () {
+    return navigator.userAgent.match(/Opera Mini/i);
+  },
+  Windows: function () {
+    return navigator.userAgent.match(/IEMobile/i);
+  },
+  any: function () {
+    return (
+      isMobile.Android() ||
+      isMobile.BlackBerry() ||
+      isMobile.iOS() ||
+      isMobile.Opera() ||
+      isMobile.Windows()
+    );
+  },
+};
+
+
 
   const scrollItems = document.querySelectorAll('.scroll-item');
 
@@ -24,22 +53,23 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
     function showScrollAnim() {
       for (let scrollItem of scrollItems) {
-        // высота элемента
+        // element height
         const scrollItemHeight = scrollItem.offsetHeight;
-        // положение на странице (прокрутка страницы top окна + положение элемента относительно окна)
-        const scrollItemOffset =
-          pageYOffset + scrollItem.getBoundingClientRect().top;
-        // при прокрутке на какую часть элемента показываем его на странице (прокрутив 4 часть элемента)
+
+        // position on a page
+        const scrollItemOffset = scrollY  + scrollItem.getBoundingClientRect().top;
+        
+        // part of item needed to scroll to be shown
         const scrollItemPart = 4;
 
-        // определяем точку появления элемента - после появления в окне четверти элемента
+        // position to be scrolled for item to appier
         let viewPoint = window.innerHeight - scrollItemHeight / scrollItemPart;
-        // если элемент больше окна, при прокрутке четверти окна
+        // case if item is larger than window
         if (scrollItemHeight > window.innerHeight) {
           viewPoint = window.innerHeight - window.innerHeight / scrollItemPart;
         }
 
-        if (pageYOffset > scrollItemOffset - viewPoint) {
+        if (scrollY > scrollItemOffset - viewPoint) {
           scrollItem.classList.add('scroll-item--active');
         }
       }
@@ -57,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   // typing 
 
   var typed = new Typed('.typed', {
-    strings: ['Bond', 'Stas Prokopyshyn'],
+    strings: ['James Bo', 'Stas Prokopyshyn'],
     typeSpeed: 120,
     startDelay: 1800,
     backSpeed: 150,
@@ -77,7 +107,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
     keyboard: true,
 
     breakpoints: {
-      // when window width is >= 400px
       400: {
         slidesPerView: 3,
       },
@@ -112,32 +141,33 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
   });
 
-  document.querySelector(".carousel__container").addEventListener("mouseout", () => {
-    console.log('out')
-    swiper.autoplay.start();
-  });
 
 
   // -----------  active scroll menu item  -----------
-/*
+
   window.addEventListener('scroll', () => {
     let scrollDistance = window.scrollY;
-    let sections = document.querySelectorAll('.section');
+    const allSections = document.querySelectorAll('.section');
+    const navItems = document.querySelectorAll('.nav__item');
 
-    for (let i = 0; i < sections.length; i++) {
-      let sectionPosition = sections[i].offsetTop;
-      let navItems = document.querySelectorAll('.nav__item');
+    allSections.forEach(s => {
+      console.log(s.offsetTop)
+    })
+    
 
+    for (let i = 0; i < allSections.length; i++) {
+      let sectionPosition = allSections[i].offsetTop;
+      
+      
       if (sectionPosition - header.clientHeight < scrollDistance) {
         for (let navLink of navLinks) {
           navLink.classList.remove('nav__link--active');
         }
-
-        navItems[i].querySelector('a').classList.add('nav__link--active');
+        navItems[i].querySelector('.nav__link').classList.add('nav__link--active');
       }
 
       let contacts = document.querySelector('.contacts');
-      let contactsPosition = contacts.offsetTop - 200;
+      let contactsPosition = contacts.offsetTop - 500;
 
       if (contactsPosition - header.clientHeight < scrollDistance) {
         for (let navLink of navLinks) {
@@ -152,15 +182,15 @@ document.addEventListener('DOMContentLoaded', function(event) {
   //-----------  scroll toggle  -----------
 
   function scrollToggle(elem, classActive) {
-    // ширина скролла
+    // scroll width
     let body = document.body;
     let paddingOffset = window.innerWidth - body.offsetWidth + 'px';
 
-    // функция блокировки скролла
+    // blocking scroll
     if (elem.classList.contains(classActive)) {
       document.body.style.overflow = 'hidden';
 
-      // если десктоп - убираем скачок страницы - компенсируем скролл
+      // case of desktop - removing 'jump of page'
       if (!isMobile.any()) {
         body.style.paddingRight = paddingOffset;
         header.style.paddingRight = paddingOffset;
@@ -168,25 +198,25 @@ document.addEventListener('DOMContentLoaded', function(event) {
     } else {
       document.body.style.overflow = '';
 
-      // если десктоп - убираем компенсацию скролла
+      // adding paddings if desktop
       if (!isMobile.any()) {
         body.style.paddingRight = '0px';
         header.style.paddingRight = '0px';
       }
     }
   }
-*/
+
   //-----------  burger-menu  -----------
 
   burgerBtn.addEventListener('click', function () {
     header.classList.toggle('header--active-nav');
     burgerBtn.classList.toggle('burger--active');
 
-    // блокируем/возобновляем скролл страницы
+    // blocking-resuming scroll
     scrollToggle(burgerBtn, 'burger--active');
   });
 
-  // функция закрытия меню бургер
+  // burger close
   let resetNav = function () {
     if (burgerBtn.classList.contains('burger--active')) {
       burgerBtn.classList.remove('burger--active');
@@ -196,18 +226,13 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
   };
 
-  // закрываем бургер при клике на ссылку в меню
+  // closing burger
   for (let navLink of navLinks) {
     navLink.addEventListener('click', function (evt) {
-      // если открыто меню-бургер, закрываем его
       resetNav();
     });
   }
 
-  // закрываем бургер меню при ресайзе окна
+  // closing burger if resizing
   window.addEventListener('resize', resetNav);
-
-  
-
-
 });

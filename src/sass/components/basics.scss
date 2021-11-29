@@ -10,7 +10,7 @@ html {
 
 body {
   @include manrope;
-
+  margin: 0;
   color: $color-text;
   font-size: $fs-xs;
   font-weight: $fw-regular;
@@ -31,6 +31,25 @@ body {
   &--m {
     padding-top: 100px;
     padding-bottom: 100px;
+  }
+
+  @include breakpoint-max(lg) {
+    max-width: 700px;
+    padding: 100px 0;
+  }
+
+  @include breakpoint-max(md) {
+    max-width: 500px;
+  }
+
+  @include breakpoint-max(sm) {
+    max-width: 600px;
+    padding: 80px 25px;
+  }
+
+  @include breakpoint-max(xs) {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
 

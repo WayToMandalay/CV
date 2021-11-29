@@ -1,0 +1,157 @@
+.contacts {
+  color: $color-white;
+  text-align: center;
+  background-color: $color-text;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__slogan {
+    max-width: 350px;
+    margin: 0;
+    margin-bottom: 60px;
+    font-size: $fs-m;
+    line-height: 1.4;
+
+    opacity: 0;
+    transform: translateY(20%);
+    transition: 0.5s;
+
+    &.scroll-item--active {
+      opacity: 0.7;
+    }
+  }
+
+  &__list {
+    @extend %list;
+
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-bottom: 60px;
+    width: 350px;
+
+    @include breakpoint-max(xs) {
+      width: 100%;
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+    width: 45px;
+    height: 45px;
+    color: $color-white;
+    font-size: $fs-s;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+
+    opacity: 0;
+    transform: translateY(20%);
+    transition: background-color 0.5s, transform 0.5s ease 0.2s,
+      opacity 0.5s 0.2s;
+
+    @include breakpoint-max(xs) {
+      width: 40px;
+      height: 40px;
+    }
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &:hover,
+    &:hover.scroll-show {
+      background-color: $color-white;
+      transform: translateY(-5px);
+
+      &::before {
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+.contacts__logo {
+  display: inline-block;
+  margin-bottom: 25px;
+  opacity: 0;
+  transition: 1s;
+  transform: translateY(80%);
+
+  svg {
+    width: 100px;
+    height: auto;
+    fill: $color-white;
+  }
+
+  .st0, .st5 {
+    fill: none;
+    stroke: $color-white
+  }
+}
+
+.arrow-up {
+  @extend %btn;
+
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin-bottom: 45px;
+
+  animation-name: up-down;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  animation-direction: alternate;
+
+  &:hover {
+    animation-play-state: paused;
+
+    &::before,
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 100%;
+    height: 3px;
+    background-color: $color-white;
+    transform: rotate(45deg);
+    transform-origin: 0 0;
+  }
+
+  &:before {
+    left: -50%;
+    transform-origin: 100% 50%;
+    transform: rotate(-45deg);
+  }
+}
+
+.copyright {
+  font-size: $fs-xxs;
+  opacity: 0.7;
+
+  a {
+    color: $color-white;
+    text-decoration: none;
+    transition: $transition;
+
+    &:hover {
+      color: $color-primary;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    }
+  }
+}

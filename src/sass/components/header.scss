@@ -9,8 +9,7 @@
   opacity: 0;
   transform: translate3d(0, -100%, 50px);
   visibility: hidden;
-  // transition: opacity 0.7s, transform 0.7s, visibility 0.7s;
-  transition: all 0.7s;
+  transition: opacity 0.7s, transform 0.7s, visibility 0.7s;
 
   &--active {
     opacity: 1;
@@ -65,6 +64,7 @@
 }
 
 .burger {
+  $parent: &;
   @extend %btn;
 
   position: relative;
@@ -120,7 +120,7 @@
       transform: translate(-50%, -50%) rotate(-40deg);
     }
 
-    &__line {
+    .burger__line {
       transform: scale(0);
     }
   }

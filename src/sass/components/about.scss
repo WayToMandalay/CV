@@ -71,6 +71,7 @@
       & img {
         width: 100%;
         height: 100%;
+        object-position: -15px top;
         object-fit: cover;
         transition: 0.7s;
       }
