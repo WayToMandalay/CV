@@ -37,13 +37,17 @@
     &:hover {
       color: $color-primary;
       transform: scale(1.5);
+
+      path.toChange {
+        fill: $color-primary;
+      }
     }
 
     i {
       font-size: $fs-xxl;
 
       &.fa-terminal,
-      &.fa-java      
+      &.fa-java
       {
         font-size: $fs-xxl;
       }
@@ -56,5 +60,12 @@
   transition-timing-function: linear !important;
 }
 
-
+.gsap-icon {
+  width: 56px;
+  height: 56px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('../assets/icons/gsap.svg');
+}
 
